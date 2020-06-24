@@ -21,14 +21,14 @@ public class BrowserContent extends GraphicsElement {
 		panel = new JPanel();
 		panel.setLayout(null);
 		panel.setLocation(0, 80);
-		panel.setSize(manager.getFrame().getWidth(), manager.getFrame().getContentPane().getHeight() - 80);
+		panel.setSize(getManager().getFrame().getWidth(), getManager().getFrame().getContentPane().getHeight() - 80);
 		panel.setBackground(Color.RED);
 	}
 
 	@Override
 	public void tick() {
 		if (panel != null) {
-			panel.setSize(manager.getFrame().getWidth(), manager.getFrame().getContentPane().getHeight() - 80);
+			panel.setSize(getManager().getFrame().getWidth(), getManager().getFrame().getContentPane().getHeight() - 80);
 		}
 	}
 

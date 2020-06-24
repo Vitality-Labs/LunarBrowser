@@ -98,6 +98,7 @@ public class GraphicsManager {
 	
 	public void closeApp() {
 		frame.dispose();
+		l.getCefApp().dispose();
 		System.exit(0);
 	}
 	

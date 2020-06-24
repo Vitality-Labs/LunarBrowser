@@ -8,16 +8,17 @@ import com.vitalitylabs.graphics.GraphicsElement;
 import com.vitalitylabs.graphics.GraphicsManager;
 import com.vitalitylabs.graphics.LunarColors;
 import com.vitalitylabs.graphics.components.subcomponents.LogoArea;
+import com.vitalitylabs.graphics.components.subcomponents.NewTabButton;
+import com.vitalitylabs.graphics.components.subcomponents.TabElement;
 import com.vitalitylabs.graphics.components.subcomponents.WindowButtons;
-import com.vitalitylabs.graphics.tabs.Tab;
 
 public class TabContainer extends GraphicsElement {
 
 	private JPanel panel;
-	private JPanel textArea;
+	private LogoArea textArea;
 	private WindowButtons wb;
-	private ArrayList<Tab> openTabs = new ArrayList<Tab>();
-	
+	private ArrayList<TabElement> tabElements = new ArrayList<TabElement>();
+	private NewTabButton newTabButton;
 	public TabContainer(GraphicsManager manager) {
 		super(manager);
 	}
@@ -27,7 +28,7 @@ public class TabContainer extends GraphicsElement {
 		panel = new JPanel();
 		panel.setLayout(null);
 		panel.setLocation(0, 0);
-		panel.setSize(manager.getFrame().getWidth(), 40);
+		panel.setSize(getManager().getFrame().getWidth(), 40);
 		panel.setBackground(LunarColors.background_dark);
 		
 		textArea = new LogoArea();
@@ -35,21 +36,36 @@ public class TabContainer extends GraphicsElement {
 		
 		wb = new WindowButtons(this);
 		panel.add(wb);
+		
+		newTabButton = new NewTabButton(this);
+		panel.add(newTabButton);
+	}
+	
+	public void addTab(TabElement te) {
+		tabElements.add(te);
+		panel.add(te.getRoot());
 	}
 
 	@Override
 	public void tick() {
 		if (panel != null) {
-			panel.setSize(manager.getFrame().getWidth(), 40);
+			panel.setSize(getManager().getFrame().getWidth(), 40);
 		}
 		
 		if (wb != null)
 			wb.tick();
+		
+		if (newTabButton != null)
+			newTabButton.tick();
 	}
 
 	@Override
 	public JPanel getRoot() {
 		return panel;
+	}
+
+	public ArrayList<TabElement> getTabElements() {
+		return tabElements;
 	}
 
 }

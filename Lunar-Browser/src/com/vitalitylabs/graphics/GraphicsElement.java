@@ -4,7 +4,7 @@ import java.awt.Component;
 
 public abstract class GraphicsElement {
 	
-	public GraphicsManager manager;
+	private GraphicsManager manager;
 	
 	public GraphicsElement(GraphicsManager manager) {
 		this.manager = manager;

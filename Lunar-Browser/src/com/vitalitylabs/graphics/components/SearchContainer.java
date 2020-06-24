@@ -26,7 +26,7 @@ public class SearchContainer extends GraphicsElement {
 		panel = new JPanel();
 		panel.setLayout(null);
 		panel.setLocation(0, 40);
-		panel.setSize(manager.getFrame().getWidth(), 40);
+		panel.setSize(getManager().getFrame().getWidth(), 40);
 		panel.setBackground(LunarColors.background_main);
 		panel.setBorder(new LineBorder(LunarColors.background_dark, 1, false));
 		
@@ -43,7 +43,7 @@ public class SearchContainer extends GraphicsElement {
 	@Override
 	public void tick() {
 		if (panel != null) {
-			panel.setSize(manager.getFrame().getWidth(), 40);
+			panel.setSize(getManager().getFrame().getWidth(), 40);
 		}
 		
 		if (pageMoveContainer != null)
